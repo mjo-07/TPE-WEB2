@@ -5,4 +5,4 @@
     $configuracion['host']       = 'localhost';
     $configuracion['usuario']    = 'root';
     $configuracion['password']   = '';
-    $configuracion['basenombre'] = 'db_todo_lis';
+    $configuracion['basenombre'] = 'db_web2_videojuegos';

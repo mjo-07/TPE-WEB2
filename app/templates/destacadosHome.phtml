@@ -1,0 +1,14 @@
+<?php
+/** @var array $elementos */ 
+?>
+
+<div class="gameEdit">
+    <h3>JUEGOS DESTACADOS</h3>
+    <ul class="ulgames">
+        <?php foreach($elementos as $elemento): ?>
+        <li class="ligames">
+            <?php require 'card.phtml';?>
+        </li>
+        <?php endforeach; ?>
+    </ul>
+</div>
