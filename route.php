@@ -21,8 +21,9 @@ switch ($params[0]) {
         $controllerHome->showHome();
         break;
     case 'games':
-        
-    
+        $controllerGame = new ControllerGame();
+        $controllerGame->showGames();
+        break;
     default:
         # code...
         break;
