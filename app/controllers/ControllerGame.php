@@ -13,10 +13,13 @@ class ControllerGame{
         $this->view = new ViewGame();
     }
 
-    function mostrarHome(){
-        $this->model->getGames();
+    function showGames(){
+        $juegos = $this->model->getGames();
+        $this->view->renderGames($juegos);
 
     }
+
+    
 
 
 }

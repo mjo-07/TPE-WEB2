@@ -13,7 +13,7 @@ if(!isset($action) || empty($action)){
 
 $params = explode('/', $action);
 //params = [0]->juego,[1]->5643
-//00000000,juego/uncharter
+//00000000,juego/uncharted
 
 switch ($params[0]) {
     case 'home':
@@ -21,8 +21,9 @@ switch ($params[0]) {
         $controllerHome->showHome();
         break;
     case 'games':
-
-    
+        $controllerGame = new ControllerGame();
+        $controllerGame->showGames();
+        break;
     default:
         # code...
         break;

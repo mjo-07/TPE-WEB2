@@ -5,7 +5,7 @@ class ModelGame extends Model{
 
     function getGames(){
         $pdo = $this->crearConexion();
-        $query = $pdo->prepare("SELECT * FROM video_juego");
+        $query = $pdo->prepare("SELECT *, titulo AS nombre FROM video_juego");
         $query->execute();
         $games = $query->fetchAll(PDO::FETCH_OBJ);
         return $games;
