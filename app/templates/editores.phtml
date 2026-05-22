@@ -1,15 +1,15 @@
 <?php
-
 /** @var array $elementos */
 ?>
 
-<div class="gameEdit">
-    <h3 class="text-md-center">JUEGOS DESTACADOS</h3>
-    <ul class="ulgames">
+<seccion class="editores">
+    <ul class="uleditors">
         <?php foreach ($elementos as $elemento): ?>
             <li class="ligames">
                 <?php require 'cardBase.phtml'; ?>
             </li>
         <?php endforeach; ?>
     </ul>
-</div>
+
+
+</seccion>

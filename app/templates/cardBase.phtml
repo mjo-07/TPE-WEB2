@@ -1,0 +1,13 @@
+<?php
+/** @var stdClass $elemento */ 
+/** @var String $ref */ 
+?>
+
+
+    <div class="card">
+        <img src="<?= $elemento->imagen; ?>"
+            class="card-img-top" alt="...">
+        <div class="card-body">
+            <a href="<?= $this->ref . '/' . $elemento->id ?>" style="color: white"><h5 class="card-title"><?= $elemento->nombre; ?></h5></a>
+        </div>
+    </div>
