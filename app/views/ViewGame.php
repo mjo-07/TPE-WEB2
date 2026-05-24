@@ -1,6 +1,11 @@
 <?php
 
-class ViewGame{
+require_once 'View.php';
+
+class ViewGame extends View{
+
+    public $ref = 'game';
+
     
     function renderGames($elementos){
         require_once 'app/templates/head.phtml';

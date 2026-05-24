@@ -2,12 +2,25 @@
 /** @var stdClass $elemento */ 
 ?>
 
-<a href="#">
-    <div class="card">
-        <img src="<?= $elemento->imagen; ?>"
-            class="card-img-top" alt="...">
-        <div class="card-body">
-            <h5 class="card-title"><?= $elemento->nombre; ?></h5>
-        </div>
+
+<div class="card mb-3">
+    <img src="<?= $elemento->imagen ?>"
+        class="card-img-top " alt="...">
+
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item"><?= $elemento->titulo ?></li>
+        <li class="list-group-item"><?= $elemento->descripcion ?></li>
+        <li class="list-group-item">
+        <a href="editor/ <?= $elemento->id_editor ?>" style="color: white">
+            <?= $elemento->nombre_empresa?>
+        </a>    
+    </li>
+    </ul>
+    <div class="card-body">
+        <a href="game/<?= $elemento->id_juego ?>" class="card-link">Detalles</a>
+
     </div>
-</a>
+    <div class="card-footer text-muted">
+        <?= $elemento->precio ?>
+    </div>
+</div>

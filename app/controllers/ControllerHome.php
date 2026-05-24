@@ -21,4 +21,8 @@ class ControllerHome{
         $this->view->renderHome($gamesDescatacdos,$editoresDestacados);
     }
 
+    function showAbout(){
+        $this->view->renderAbout();
+    }
+
 }
