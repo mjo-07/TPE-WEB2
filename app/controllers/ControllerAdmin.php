@@ -302,9 +302,11 @@ class ControllerAdmin
 
     function modifyGame($id)
     {
+        $modelEditor = new ModelEditor();
+        $editors = $modelEditor->getAllEditors($id);
         $modelGame = new ModelGame();
-        $editor = $modelGame->getGame($id);
-        $this->view->renderModifyGame($editor);
+        $game = $modelGame->getGame($id);
+        $this->view->renderModifyGame($game,$editors);
     }
 
     function addModifyGame($id){
@@ -337,7 +339,7 @@ class ControllerAdmin
             $nombreImagenGuardar = time() . "_" . $fileName;
 
 
-            $uploadFileDir = './uploads/';
+            $uploadFileDir = './imagenes/';
             $dest_path = $uploadFileDir . $nombreImagenGuardar;
 
 

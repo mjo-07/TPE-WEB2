@@ -40,7 +40,7 @@ class ViewAdmin extends View
 
     }
 
-    function renderFormAltasGame($editores){
+    function renderFormAltasGame($editores, $game = null){
         require_once 'app/templates/head.phtml';
         require_once 'app/templates/formGame.phtml';
         require_once 'app/templates/foot.phtml';
@@ -53,7 +53,7 @@ class ViewAdmin extends View
 
     }
 
-    function renderModifyGame($game){
+    function renderModifyGame( $game,$editors){
         require_once 'app/templates/head.phtml';
         require_once 'app/templates/formGame.phtml';
         require_once 'app/templates/foot.phtml';

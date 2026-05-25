@@ -4,7 +4,7 @@
 ?>
 
 <div class="gameEdit">
-    <h3 class="text-md-center">JUEGOS DESTACADOS</h3>
+    <h3 class="text-md-center"><?= $this->ref == 'game' ? 'JUEGOS DESTACADOS' : 'EDITORES DESTACADOS' ?></h3>
     <ul class="ulgames">
         <?php foreach ($elementos as $elemento): ?>
             <li class="ligames">
