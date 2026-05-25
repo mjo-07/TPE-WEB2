@@ -63,8 +63,7 @@
     <?php if (isset($game) && !empty($game->imagen)): ?>
         <div class="mb-3 p-2 border rounded bg-white text-center d-inline-block">
             <p class="small text-muted mb-1">Carátula actual:</p>
-            <img src="<?= BASE_URL ?>/uploads/<?= $game->imagen ?>" alt="Carátula actual" class="img-thumbnail" style="max-height: 120px;">
-            
+            <img src="<?= BASE_URL ?>imagenes/<?= $game->imagen ?>" alt="Carátula actual" class="img-thumbnail" style="max-height: 120px;">
             <input type="hidden" name="imagen_actual" value="<?= $game->imagen ?>">
         </div>
     <?php endif; ?>
