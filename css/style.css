@@ -1,36 +1,53 @@
-main{
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+}
+
+
+main, section {
+    flex: 1;
+}
+
+main {
     padding: 50px 50px 0px 50px;
 }
 
-/*.container{
-    display: flex;
-    flex-direction: row;
-    margin: 0  ;
-    padding: 0px;
-    width: 100%;
-}*/
-
-.container-footito{
-    padding:  50px 0 50px 0;
+.container-footito {
+    padding: 50px 0 50px 0;
     width: 100%;
     display: flex;
     flex-direction: column;
 }
 
-aside{
+aside {
     width: 15%;
 }
-main{
+
+main {
     width: 100%;
 }
 
-.navbar-brand{
+.navbar-brand {
     margin-left: 5PX;
 }
 
-a{
+a {
     text-decoration: none;
 }
+
+th, td{
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
 
 .noticias {
     display: grid;
@@ -44,14 +61,17 @@ a{
     object-fit: cover;
 }
 
+
+
 .noticia-image {
     max-height: 500px;
     width: 100%;
     object-fit: cover;
+    border-radius: 5px;
 }
 
 
-.gameEdit{
+.gameEdit {
     padding: 10px;
     margin: 10px;
     display: flex;
@@ -59,17 +79,17 @@ a{
     justify-content: center;
 }
 
-.ulgames{
+.ulgames {
     display: flex;
     justify-content: center;
     list-style: none;
     gap: 30px;
     padding: 10px;
     margin: 10px;
-    
+
 }
 
-.uleditors{
+.uleditors {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -87,17 +107,17 @@ a{
     grid-gap: 25px;
 }
 
-.editores{
-    
+.editores {
+
     margin: 10px;
     padding: 10px;
 }
 
-.form-load{
-    
+.form-load {
+
     width: 30%;
     margin: 20px;
-    padding:  50px ;
+    padding: 50px;
     box-shadow: 1px 1px 50px -30px;
     border-radius: 5px;
     display: flex;
@@ -110,7 +130,7 @@ a{
     gap: 20px;
 }
 
-.logg-out{
+.logg-out {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -124,6 +144,7 @@ a{
 /* Opcional: Hacerlo responsivo para pantallas más pequeñas (celulares) */
 @media (max-width: 768px) {
     .carousel-item img {
-        height: 300px; /* Un alto menor para móviles */
+        height: 300px;
+        /* Un alto menor para móviles */
     }
 }

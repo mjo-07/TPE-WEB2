@@ -1,10 +1,16 @@
                 </main>
-                <script src="./js/bootstrap.bundle.min.js"></script>
-                <footer class="bg-<?= ($this->ref != 'admin') ? 'dark': 'ligth' ?> text-ligth ">
+                <footer class="bg-<?= ($this->ref != 'admin') ? 'dark' : 'ligth' ?> text-ligth ">
                         <div class="text-center pt-3 mt-3 pb-3 mt-3">
-                                <p class="mb-0">&copy; 2026 STEAM - Todos los derechos reservados</p>
+                                <p class="mb-0">&copy; <?= date('Y') ?> STEAM - Todos los derechos reservados</p>
                         </div>
                 </footer>
-        </body>
+                <script src="<?= BASE_URL ?>/js/bootstrap.bundle.min.js"></script>
+                <?php if ($this->ref == 'admin'): ?>
+                        <script>
+                                const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]')
+                                const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl))
+                        </script>
+                <?php endif; ?>
+                </body>
 
-</html>
+                </html>

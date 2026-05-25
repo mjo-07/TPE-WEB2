@@ -29,9 +29,56 @@ if (isset($_SESSION['admin'])) {
             $controllerAdmin = new ControllerAdmin();
             $controllerAdmin->logout();
             break;
-
+        case 'editGames':
+            $controllerAdmin = new ControllerAdmin();
+            $controllerAdmin->showEditsGames();
+            break;
+        case 'editEditores':
+            $controllerAdmin = new ControllerAdmin();
+            $controllerAdmin->showEditsEditors();
+            break;
+        case 'deleteEditor':
+            $controllerAdmin = new ControllerAdmin();
+            $controllerAdmin->deleteEditor($params[1]);
+            break;
+        case 'formAltasEditores':
+            $controllerAdmin = new ControllerAdmin();
+            $controllerAdmin->showFormEditores();
+            break;
+        case 'formAltasGames':
+            $controllerAdmin = new ControllerAdmin();
+            $controllerAdmin->showFormGames();
+            break;
+        case 'altaEditor':
+            $controllerAdmin = new ControllerAdmin();
+            $controllerAdmin->saveEditor();
+            break;
+        case 'altaGames':
+            $controllerAdmin = new ControllerAdmin();
+            $controllerAdmin->saveGame();
+            break;
+        case "modifyEditor":
+            $controllerAdmin = new ControllerAdmin();
+            $controllerAdmin->ModifyEditor($params[1]);
+            break;
+        case 'addModifyEditor':
+            $controllerAdmin = new ControllerAdmin();
+            $controllerAdmin->addModifyEditor($params[1]);
+            break;
+        case 'deleteGame':
+            $controllerAdmin = new ControllerAdmin();
+            $controllerAdmin->deleteGame($params[1]);
+            break;
+        case 'modifyGame':
+            $controllerAdmin = new ControllerAdmin();
+            $controllerAdmin->modifyGame($params[1]);
+            break;
+        case 'addModifyGame':
+             $controllerAdmin = new ControllerAdmin();
+            $controllerAdmin->addModifyGame($params[1]);
+            break;
         default:
-            # code...
+            echo '<h1>Parece que esta pagian no existe</h1>';
             break;
     }
 } else {
@@ -61,7 +108,7 @@ if (isset($_SESSION['admin'])) {
             $controllerHome = new ControllerHome();
             $controllerHome->showAbout();
             break;
-        case 'admin12345':
+        case 'administrar':
             $controllerAdmin = new ControllerAdmin();
             $controllerAdmin->showFormLogin();
             break;
@@ -71,6 +118,7 @@ if (isset($_SESSION['admin'])) {
             break;
 
         default:
+            echo '<h1>Parece que esta pagian no existe</h1>';
             break;
     }
 }

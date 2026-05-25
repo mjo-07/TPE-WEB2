@@ -1,6 +1,7 @@
 <?php
 require_once 'app/models/ModelEditor.php';
 require_once 'app/views/ViewEditor.php';
+require_once 'app/models/ModelGame.php';
 
 class ControllerEditor {
 
@@ -19,8 +20,10 @@ class ControllerEditor {
     }
 
     function showEditor($id){
+        $gameModel = new ModelGame();
+        $gamesByEditor = $gameModel->getGamesByEditor($id);
         $editor = $this->model->getEditor($id);
-        $this->view->renderEditor($editor);
+        $this->view->renderEditor($gamesByEditor, $editor);
     }
 
 }
