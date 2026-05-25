@@ -1,0 +1,45 @@
+<?php
+
+/** @var array $editores 
+ * @var boolean $resultado
+*/
+?>
+
+<section class="pe-5 ps-5">
+    <h1>EDICION DE EDITORES</h1>
+    <?php require_once 'app/templates/mensaje.phtml'; ?>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">Nombre</th>
+                <th scope="col">Pais</th>
+                <th scope="col">Sitio Web</th>
+                <th scope="col">Valoracion</th>
+                <th scope="col">Descripcion</th>
+                <th scope="col">Editar</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach ($editores as $editor): ?>
+                <tr class="table-warning">
+                    <th scope="row"><?= $editor->nombre_empresa ?></th>
+                    <td><?= $editor->pais ?></td>
+                    <td><?= $editor->sitio_web ?></td>
+                    <td><?= $editor->valoracion ?></td>
+                    <td><button type="button" class="btn btn-outline-info" data-bs-container="body"
+                            data-bs-toggle="popover" data-bs-placement="bottom" data-bs-html="true"
+                            data-bs-title="Información del Editor"
+                            data-bs-content="<p><?= $editor->descripcion ?></p><hr>
+                                <img src='<?= BASE_URL ?>imagenes/<?= $editor->imagen ?>' class='img-fluid rounded mx-auto d-block' alt='Logo'>">
+                            Ver más
+                        </button></td>
+                    <td>
+                        <a href="<?= BASE_URL . 'modifyEditor/' . $editor->id_editor ?>" class='btn btn-outline-warning'>Modificar</a>
+                        <a href="<?= BASE_URL . 'deleteEditor/' . $editor->id_editor ?>" class='btn btn-outline-danger'>Borrar</a>
+                    </td>
+                </tr>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
+</section>

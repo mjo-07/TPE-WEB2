@@ -17,7 +17,7 @@ class ModelGame extends Model
     function getGame($id)
     {
         $pdo = $this->crearConexion();
-        $query = $pdo->prepare("SELECT v.* e.nombre_empresa FROM video_juego v JOIN editor e USING (id_editor) WHERE id_juego = ?");
+        $query = $pdo->prepare("SELECT v.*, e.id_editor, e.nombre_empresa FROM video_juego v JOIN editor e USING (id_editor) WHERE id_juego = ?");
         $query->execute([$id]);
         $game = $query->fetch(PDO::FETCH_OBJ);
         return $game;
@@ -30,5 +30,49 @@ class ModelGame extends Model
         $query->execute([$valoracion]);
         $destacados = $query->fetchAll(PDO::FETCH_OBJ);
         return $destacados;
+    }
+
+    function getGamesByEditor($idEditor)
+    {
+        $pdo = $this->crearConexion();
+        $query = $pdo->prepare("SELECT * FROM video_juego WHERE id_editor = ?");
+        $query->execute([$idEditor]);
+        $games = $query->fetchAll(PDO::FETCH_OBJ);
+        return $games;
+    }
+
+    function deleteOneGame($id)
+    {
+        try {
+            $pdo = $this->crearConexion();
+            $query = $pdo->prepare("DELETE FROM video_juego WHERE id_juego = ?");
+            $query->execute([$id]);
+
+            return true; // Se eliminó correctamente
+
+        } catch (PDOException $e) {
+            return false; // Ocurrió un error inesperado
+        }
+    }
+
+    function insertNewGame($nombre, $precio, $lanzamiento, $valoracion, $id_editor, $descripcion, $resenia, $imagen)
+    {
+        try {
+            $pdo = $this->crearConexion();
+            $query = $pdo->prepare("INSERT INTO video_juego (titulo, precio, fecha_lanzamiento, valoracion, id_editor, descripcion, resenia, imagen) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+            return $query->execute([$nombre, $precio, $lanzamiento, $valoracion, $id_editor, $descripcion, $resenia, $imagen]);
+        } catch (PDOException $e) {
+            return false;
+        }
+    }
+
+    function updateGame($id,$nombre, $precio, $lanzamiento, $valoracion, $id_editor, $descripcion, $resenia, $imagen){
+        try {
+            $pdo = $this->crearConexion();
+            $query = $pdo->prepare("UPDATE video_juego SET titulo = ?, precio = ?, fecha_lanzamiento = ?, valoracion = ?, id_editor = ?, descripcion = ?, resenia = ?, imagen = ? WHERE d_juego = ?");
+            return $query->execute([$nombre, $precio, $lanzamiento, $valoracion, $id_editor, $descripcion, $resenia, $imagen, $id]);
+        } catch (PDOException $e) {
+            return false;
+        }
     }
 }

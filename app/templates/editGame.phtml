@@ -1,0 +1,44 @@
+<?php
+
+/** @var array $games */
+?>
+
+<section class="pe-5 ps-5">
+    <h1>EDICION DE JUEGOS</h1>
+    <?php require_once 'app/templates/mensaje.phtml'; ?>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">Título</th>
+                <th scope="col">Descripción</th>
+                <th scope="col">Precio</th>
+                <th scope="col">Fecha lanzamiento</th>
+                <th scope="col">Valoración</th>
+                <th scope="col">Resenia</th>
+                <th scope="col">Editar</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach ($games as $game): ?>
+                <tr class="table-success">
+                    <th scope="row"><?= $game->titulo ?></th>
+                    <td><?= $game->descripcion ?></td>
+                    <td><?= $game->precio ?></td>
+                    <td><?= $game->fecha_lanzamiento ?></td>
+                    <td>5</td>
+                    <td><button type="button" class="btn btn-outline-info" data-bs-container="body"
+                            data-bs-toggle="popover" data-bs-placement="bottom" data-bs-html="true"
+                            data-bs-title="Información del Editor"
+                            data-bs-content="<p><?= $game->resenia ?></p><hr>
+                                <img src='<?= BASE_URL ?>imagenes/<?= $game->imagen ?>' class='img-fluid rounded mx-auto d-block' alt='Logo'>">
+                            Ver más
+                        </button></td>
+                    <td>
+                        <a href="<?= BASE_URL ?>modifyGame" class='btn btn-outline-warning' type='button'>Modificar</a>
+                        <a href="<?= BASE_URL  .'deleteGame/' . $game->id_juego?>" class='btn btn-outline-danger' type='button'>Borrar</a>
+                    </td>
+                <?php endforeach; ?>
+        </tbody>
+    </table>
+</section>

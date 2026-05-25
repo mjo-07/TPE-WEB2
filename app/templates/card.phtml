@@ -1,23 +1,26 @@
 <?php
-/** @var stdClass $elemento */ 
+/** @var stdClass $elemento 
+ *  @var stdClass $editor
+ *  @var String $ref
+ * */ 
 ?>
 
 
 <div class="card mb-3">
-    <img src="<?= $elemento->imagen ?>"
+    <img src="<?= BASE_URL ?>imagenes/<?= $elemento->imagen ?>"
         class="card-img-top " alt="...">
 
     <ul class="list-group list-group-flush">
         <li class="list-group-item"><?= $elemento->titulo ?></li>
         <li class="list-group-item"><?= $elemento->descripcion ?></li>
         <li class="list-group-item">
-        <a href="editor/ <?= $elemento->id_editor ?>" style="color: white">
-            <?= $elemento->nombre_empresa?>
+        <a href="<?= BASE_URL ?>editor/ <?= $elemento->id_editor ?>" style="color: white">
+            <?=($this->ref == 'game') ? $elemento->nombre_empresa : $editor->nombre_empresa ?>
         </a>    
     </li>
     </ul>
     <div class="card-body">
-        <a href="game/<?= $elemento->id_juego ?>" class="card-link">Detalles</a>
+        <a href="<?= BASE_URL ?>game/<?= $elemento->id_juego ?>" class="card-link">Detalles</a>
 
     </div>
     <div class="card-footer text-muted">

@@ -1,0 +1,81 @@
+<?php
+
+/** @var stCalss $game 
+ * @var stdClass $editores
+*/
+?>
+
+<form action="<?= ($game) ? BASE_URL . 'addModifyGame/' . $game->id_editor : BASE_URL . 'altaGames' ?>" method="POST" enctype="multipart/form-data" class="container mt-4 p-4 border rounded bg-light shadow-sm">
+
+    <h2 class="mb-4 text-primary">Formulario de Videojuego</h2>
+
+    <div class="row">
+        <div class="col-md-6 mb-3">
+            <label for="nombre_juego" class="form-label fw-bold">Título del Juego *</label>
+            <input type="text" 
+            class="form-control" 
+            id="nombre_juego" 
+            name="nombre_juego" 
+            placeholder="Ej. El juego del año"
+            value="<?= $game->titulo ?? '' ?>" 
+            required>
+        </div>
+
+        <div class="col-md-2 mb-3">
+            <label for="precio" class="form-label fw-bold">Precio ($)</label>
+            <input type="number" class="form-control" id="precio" name="precio" placeholder="0.00" step="0.01" min="0" value="<?= $game->precio ?? '' ?>" >
+        </div>
+
+        <div class="col-md-2 mb-3">
+            <label for="fecha_lanzamiento" class="form-label fw-bold">Lanzamiento</label>
+            <input type="date" class="form-control" id="fecha_lanzamiento" name="fecha_lanzamiento" value="<?= $game->fecha_lanzamiento ?? '' ?>" >
+        </div>
+
+        <div class="col-md-2 mb-3">
+            <label for="valoracion" class="form-label fw-bold">Valoración</label>
+            <input type="number" class="form-control" id="valoracion" name="valoracion" placeholder="0 a 5" min="0" max="5" value="<?= $game->valoracion ?? '' ?>" >
+        </div>
+    </div>
+
+    <div class="mb-3">
+        <label for="id_editor" class="form-label fw-bold">Editor / Developer (Categoría) *</label>
+        <select class="form-select" id="id_editor" name="id_editor" required>
+            <option value="" selected disabled>Selecciona el editor al que pertenece...</option>
+            <?php foreach ($editores as $editor): ?>
+                <option value="<?= $editor->id_editor ?>"><?= $editor->nombre_empresa ?></option>
+            <?php endforeach; ?>
+        </select>
+    </div>
+
+    <div class="mb-3">
+        <label for="descripcion" class="form-label fw-bold">Descripción del Juego</label>
+        <input type="text" class="form-control" id="descripcion" name="descripcion" placeholder="Sinopsis oficial o características breves..." value="<?= $game->descripcion ?? '' ?>" >
+    </div>
+
+    <div class="mb-3">
+        <label for="resenia" class="form-label fw-bold">Reseña / Opinión</label>
+        <textarea class="form-control" id="resenia" name="resenia" rows="3" placeholder="Escribe un análisis o crítica sobre el juego...">value="<?= $game->resenia ?? '' ?>" </textarea>
+    </div>
+
+    <div class="mb-4">
+    <label for="imagen_juego" class="form-label fw-bold">Carátula o Imagen del Juego</label>
+    
+    <?php if (isset($game) && !empty($game->imagen)): ?>
+        <div class="mb-3 p-2 border rounded bg-white text-center d-inline-block">
+            <p class="small text-muted mb-1">Carátula actual:</p>
+            <img src="<?= BASE_URL ?>/uploads/<?= $game->imagen ?>" alt="Carátula actual" class="img-thumbnail" style="max-height: 120px;">
+            
+            <input type="hidden" name="imagen_actual" value="<?= $game->imagen ?>">
+        </div>
+    <?php endif; ?>
+
+    <input class="form-control" type="file" id="imagen_juego" name="imagen_juego" accept="image/*">
+    <div class="form-text">Formatos aceptados: JPG, PNG, WEBP. Déjalo vacío para mantener la carátula actual.</div>
+</div>
+
+    <div class="d-flex justify-content-end gap-2">
+        <a href="<?= BASE_URL ?>/editGames" class="btn btn-secondary">Cancelar</a>
+        <button type="submit" class="btn btn-success"><?= ($game) ? 'Modificar juego' : 'Guardar juego' ?></button>
+    </div>
+
+</form>
