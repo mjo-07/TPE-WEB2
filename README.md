@@ -18,7 +18,7 @@ A continuación se presenta la estructura de la base de datos diseñada para est
 ![Diagrama de Entidad Relación](DER_TPE_WEB2.png)
 
 ## Usuario administrador
-URL para acceder al panel de administracion: /administrar
+URL para acceder al panel de administracion: BASE_URL/administrar
 usuario: webadmin@mail.com
 contraseña: admin
 
