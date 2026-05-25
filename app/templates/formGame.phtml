@@ -1,7 +1,7 @@
 <?php
 
 /** @var stCalss $game 
- * @var stdClass $editores
+ * @var stdClass $editors
 */
 ?>
 
@@ -41,7 +41,7 @@
         <label for="id_editor" class="form-label fw-bold">Editor / Developer (Categoría) *</label>
         <select class="form-select" id="id_editor" name="id_editor" required>
             <option value="" selected disabled>Selecciona el editor al que pertenece...</option>
-            <?php foreach ($editores as $editor): ?>
+            <?php foreach ($editors as $editor): ?>
                 <option value="<?= $editor->id_editor ?>"><?= $editor->nombre_empresa ?></option>
             <?php endforeach; ?>
         </select>
@@ -54,7 +54,7 @@
 
     <div class="mb-3">
         <label for="resenia" class="form-label fw-bold">Reseña / Opinión</label>
-        <textarea class="form-control" id="resenia" name="resenia" rows="3" placeholder="Escribe un análisis o crítica sobre el juego...">value="<?= $game->resenia ?? '' ?>" </textarea>
+        <textarea class="form-control" id="resenia" name="resenia" rows="3" placeholder="Escribe un análisis o crítica sobre el juego..."><?= $game->resenia ?? '' ?> </textarea>
     </div>
 
     <div class="mb-4">

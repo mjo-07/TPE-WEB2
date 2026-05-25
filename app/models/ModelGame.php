@@ -69,7 +69,7 @@ class ModelGame extends Model
     function updateGame($id,$nombre, $precio, $lanzamiento, $valoracion, $id_editor, $descripcion, $resenia, $imagen){
         try {
             $pdo = $this->crearConexion();
-            $query = $pdo->prepare("UPDATE video_juego SET titulo = ?, precio = ?, fecha_lanzamiento = ?, valoracion = ?, id_editor = ?, descripcion = ?, resenia = ?, imagen = ? WHERE d_juego = ?");
+            $query = $pdo->prepare("UPDATE video_juego SET titulo = ?, precio = ?, fecha_lanzamiento = ?, valoracion = ?, id_editor = ?, descripcion = ?, resenia = ?, imagen = ? WHERE id_juego = ?");
             return $query->execute([$nombre, $precio, $lanzamiento, $valoracion, $id_editor, $descripcion, $resenia, $imagen, $id]);
         } catch (PDOException $e) {
             return false;

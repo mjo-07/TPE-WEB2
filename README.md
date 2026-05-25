@@ -16,3 +16,9 @@ Se trata de un sito web que muestra información sobre videojuegos de Steam. Sem
 A continuación se presenta la estructura de la base de datos diseñada para este proyecto:
 
 ![Diagrama de Entidad Relación](DER_TPE_WEB2.png)
+
+## Usuario administrador
+URL para acceder al panel de administracion: /administrar
+usuario: webadmin@mail.com
+contraseña: admin
+
