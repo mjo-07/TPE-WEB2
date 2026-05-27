@@ -1,5 +1,60 @@
-<section>
-    <h1 style=" color: steelblue">
-        Aquí iría el ABOUT
-    </h1>
-</section>
+<div class="container mt-5 mb-5">
+    <div class="row align-items-center mb-5 p-5 bg-dark text-white rounded shadow">
+        <div class="col-md-8">
+            <h1 class="display-4 fw-bold text-info">Wiki Steam 🎮</h1>
+            <p class="lead text-light">Tu enciclopedia digital definitiva sobre el universo de los videojuegos, desarrolladores y la industria del gaming digital.</p>
+            <p class="text-secondary">Inspirado en la plataforma de distribución de videojuegos más grande del mundo, este espacio centraliza análisis, valoraciones y datos técnicos de tus títulos favoritos.</p>
+        </div>
+        <div class="col-md-4 text-center d-none d-md-block">
+            <span style="font-size: 8rem;" class="text-info">🚀</span>
+        </div>
+    </div>
+
+    <div class="row text-center g-4 mb-5">
+        <div class="col-md-4">
+            <div class="p-4 bg-dark  rounded shadow-sm">
+                <h3 class="display-6 fw-bold text-primary">+500</h3>
+                <p class="text-muted mb-0">Videojuegos Catalogados</p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="p-4 bg-dark rounded shadow-sm">
+                <h3 class="display-6 fw-bold text-success">100%</h3>
+                <p class="text-muted mb-0">Empresas y Editores Verificados</p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="p-4 bg-dark rounded shadow-sm">
+                <h3 class="display-6 fw-bold text-warning">24/7</h3>
+                <p class="text-muted mb-0">Actualizaciones de la Comunidad</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="row g-4">
+        <div class="col-md-6">
+            <div class="p-4 bg-dark  rounded h-100">
+                <h3 class="fw-bold text-secondary-emphasis mb-3">¿Qué es Wiki Steam?</h3>
+                <p class="text-secondary">Es un proyecto de gestión de catálogos desarrollado para la materia de Web 2. El sitio permite a los administradores autenticados gestionar de forma integral (Altas, Bajas y Modificaciones) el inventario de juegos disponibles, sus precios, reseñas, imágenes y la relación directa con sus empresas desarrolladoras (Editores).</p>
+                <p class="text-secondary">Los usuarios convencionales pueden explorar el sitio de manera pública, filtrando los juegos por su categoría editorial y conociendo el trasfondo de cada empresa.</p>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="p-4 bg-dark  rounded h-100">
+                <h3 class="fw-bold text-secondary-emphasis mb-3">Tecnologías Utilizadas</h3>
+                <p class="mb-2 text-secondary">Este sistema fue construido utilizando estándares modernos de desarrollo web del lado del servidor:</p>
+                <ul class="list-group list-group-flush bg-transparent">
+                    <li class="list-group-item bg-transparent ps-0 text-secondary"><strong class="text-primary">Arquitectura:</strong> Patrón Modelo-Vista-Controlador (MVC) con un ruteador avanzado (`router.php` y `.htaccess`).</li>
+                    <li class="list-group-item bg-transparent ps-0 text-secondary"><strong class="text-primary">Backend:</strong> PHP Nativo y Programación Orientada a Objetos (POO).</li>
+                    <li class="list-group-item bg-transparent ps-0 text-secondary"><strong class="text-primary">Base de Datos:</strong> MySQL relacional administrado mediante PDO con sentencias preparadas contra inyecciones SQL.</li>
+                    <li class="list-group-item bg-transparent ps-0 text-secondary"><strong class="text-primary">Diseño Front-End:</strong> Bootstrap 5 para garantizar una interfaz totalmente adaptativa (Responsive Design).</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="text-center mt-5">
+        <a href="<?= BASE_URL ?>" class="btn btn-outline-primary btn-lg px-5">Volver al Catálogo</a>
+    </div>
+</div>
