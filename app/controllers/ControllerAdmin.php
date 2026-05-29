@@ -67,7 +67,7 @@ class ControllerAdmin
         $admin = $_SESSION['admin'];
         $modelEditores = new ModelEditor();
         $editores = $modelEditores->getAllEditors();
-        $this->view->renderEditsEditors(false, $admin, $editores);
+        $this->view->renderEditsEditors($admin, $editores);
     }
 
     function showEditsGames()
@@ -85,13 +85,13 @@ class ControllerAdmin
 
         if ($resultado === "success") {
             $_SESSION['mensaje'] = "Se borró correctamente";
-            $_SESSION['alert_type'] = "success"; // Verde
+            $_SESSION['alert_type'] = "success";
         } elseif ($resultado === "restricted") {
             $_SESSION['mensaje'] = "No se puede eliminar un editor que tenga juegos asociados!";
-            $_SESSION['alert_type'] = "danger";  // Rojo
+            $_SESSION['alert_type'] = "danger";
         } else {
             $_SESSION['mensaje'] = "Ocurrió un error inesperado en la base de datos.";
-            $_SESSION['alert_type'] = "warning"; // Amarillo
+            $_SESSION['alert_type'] = "warning";
         }
         header("Location: " . BASE_URL . "/editEditores");
         exit();
@@ -291,10 +291,10 @@ class ControllerAdmin
         $resultado = $modelEditor->updateEditor($id,$nombreEmpresa, $pais, $sitioWeb, $valoracion, $descripcion, $nombreImagenGuardar);
 
         if ($resultado) {
-            $_SESSION['mensaje'] = "¡El editor se guardó correctamente!";
+            $_SESSION['mensaje'] = "¡La modificación del editor se guardó correctamente!";
             $_SESSION['alert_type'] = "success";
         } else {
-            $_SESSION['mensaje'] = "Error al insertar el editor en la base de datos.";
+            $_SESSION['mensaje'] = "Error al insertar la modificación del editor en la base de datos.";
             $_SESSION['alert_type'] = "danger";
         }
         header("Location: " . BASE_URL . "editEditores");
@@ -310,6 +310,7 @@ class ControllerAdmin
     }
 
     function addModifyGame($id){
+
         $nombre      = $_POST['nombre_juego'] ?? null;
         $precio      = $_POST['precio'] ?? null;
         $lanzamiento = $_POST['fecha_lanzamiento'] ?? null;
@@ -357,10 +358,10 @@ class ControllerAdmin
         $resultado = $modelGame->updateGame($id,$nombre, $precio, $lanzamiento, $valoracion, $id_editor, $descripcion, $resenia, $nombreImagenGuardar);
 
         if ($resultado) {
-            $_SESSION['mensaje'] = "¡El juego se guardó correctamente!";
+            $_SESSION['mensaje'] = "¡La modificación del juego se guardó correctamente!";
             $_SESSION['alert_type'] = "success";
         } else {
-            $_SESSION['mensaje'] = "Error al insertar el editor en la base de datos.";
+            $_SESSION['mensaje'] = "Error al insertar la modificación del juego en la base de datos.";
             $_SESSION['alert_type'] = "danger";
         }
         header("Location: " . BASE_URL . "editGames");
