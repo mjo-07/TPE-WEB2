@@ -18,7 +18,7 @@ class ViewAdmin extends View
         require_once 'app/templates/foot.phtml';
     }
 
-    function renderEditsEditors($resultado, $admin, $editores){
+    function renderEditsEditors($admin, $editores){
         
         require_once 'app/templates/head.phtml';
         require_once 'app/templates/header.phtml';
