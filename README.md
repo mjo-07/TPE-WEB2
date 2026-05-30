@@ -31,3 +31,4 @@ no se le da intreracción con el login, quedando solo a conocimiento de los admi
 
 **contraseña:** admin
 
+![Diagrama de Entidad Relación](assets/der/DER_TPE_WEB2.png)
