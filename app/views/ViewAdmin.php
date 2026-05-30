@@ -53,7 +53,7 @@ class ViewAdmin extends View
 
     }
 
-    function renderModifyGame( $game,$editors){
+    function renderModifyGame($game,$editores){
         require_once 'app/templates/head.phtml';
         require_once 'app/templates/formGame.phtml';
         require_once 'app/templates/foot.phtml';
