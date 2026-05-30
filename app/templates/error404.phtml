@@ -1,0 +1,24 @@
+<div class="container mt-5 mb-5 text-center text-white">
+    <div class="row justify-content-center align-items-center" style="min-height: 70vh;">
+        <div class="col-md-7 p-5 bg-dark rounded shadow-lg border border-secondary">
+            <h1 class="display-1 fw-bold text-danger animate__animated animate__bounceIn" style="font-size: 7rem;">404</h1>
+            
+            <h2 class="fw-bold mb-3 text-info">¡Misión Fallida / Ruta No Encontrada!</h2>
+            
+            <p class="lead text-secondary mb-4">
+                El archivo, juego o sección que estás intentando buscar no existe en los servidores de <strong class="text-light">Wiki Steam</strong> o fue movido a otra categoría.
+            </p>
+
+            <div class="p-3 bg-black rounded text-start font-monospace text-success mb-4 small" style="opacity: 0.8;">
+                <span class="text-muted">$</span> status --check-route<br>
+                <span class="text-danger">[ERROR]</span> Action "<?= htmlspecialchars($action ?? 'unknown') ?>" undefined in router.php.
+            </div>
+
+            <div class="mt-4">
+                <a href="<?= BASE_URL ?>" class="btn btn-outline-primary btn-lg px-5">
+                    🎮 Volver al Inicio
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

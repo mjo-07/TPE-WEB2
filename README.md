@@ -30,4 +30,3 @@ no se le da intreracción con el login, quedando solo a conocimiento de los admi
 **usuario:** webadmin@mail.com
 
 **contraseña:** admin
-

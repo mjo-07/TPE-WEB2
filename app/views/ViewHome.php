@@ -28,5 +28,10 @@ class ViewHome extends View{
         require_once 'app/templates/foot.phtml';
     }
 
+    function renderError($action){
+        require_once 'app/templates/head.phtml';
+        require_once 'app/templates/error404.phtml';
+    }
+
     
 }

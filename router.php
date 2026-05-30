@@ -78,7 +78,9 @@ if (isset($_SESSION['admin'])) {
             $controllerAdmin->addModifyGame($params[1]);
             break;
         default:
-            echo '<h1>Parece que esta pagian no existe</h1>';
+            require_once 'app/views/viewHome.php';
+            $viewHome = new ViewHome;
+            $viewHome->renderError($action);
             break;
     }
 } else {
@@ -118,7 +120,9 @@ if (isset($_SESSION['admin'])) {
             break;
 
         default:
-            echo '<h1>Parece que esta pagian no existe</h1>';
+            require_once 'app/views/viewHome.php';
+            $viewHome = new ViewHome;
+            $viewHome->renderError($action);
             break;
     }
 }
