@@ -19,6 +19,8 @@ A continuación se presenta la estructura de la base de datos diseñada para est
 
 ## Usuario administrador
 URL para acceder al panel de administracion: BASE_URL/administrar
+
 usuario: webadmin@mail.com
+
 contraseña: admin
 
