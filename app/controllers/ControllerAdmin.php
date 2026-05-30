@@ -157,7 +157,7 @@ class ControllerAdmin
             $nombreImagenGuardar = time() . "_" . $fileName;
 
 
-            $uploadFileDir = './uploads/';
+            $uploadFileDir = './imagenes/';
             $dest_path = $uploadFileDir . $nombreImagenGuardar;
 
 
