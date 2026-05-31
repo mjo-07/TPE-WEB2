@@ -84,7 +84,7 @@ class ControllerAdmin
         $resultado = $modelEditores->deleteOneEditor($id);
 
         if ($resultado === "success") {
-            $_SESSION['mensaje'] = "Se borró correctamente";
+            $_SESSION['mensaje'] = "Se borró correctamente el editor";
             $_SESSION['alert_type'] = "success";
         } elseif ($resultado === "restricted") {
             $_SESSION['mensaje'] = "No se puede eliminar un editor que tenga juegos asociados!";

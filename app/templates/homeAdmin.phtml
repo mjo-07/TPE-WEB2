@@ -1,8 +1,12 @@
+<?php
+/** @var stdClass $admin */ 
+?>
+
 <div class="container mt-5">
     <div class="row mb-4">
         <div class="col-12">
             <div class="p-5 bg-white border rounded shadow-sm text-center text-md-start">
-                <h1 class="display-5 fw-bold text-dark">¡Hola, Administrador!</h1>
+                <h1 class="display-5 fw-bold text-dark">¡Hola, <?= $admin->nombre_apellido ?>!</h1>
                 <p class="lead text-muted">Bienvenido al panel de control. Desde aquí puedes gestionar todo el catálogo de videojuegos y las empresas editoras.</p>
                 <hr class="my-4">
                 <p class="text-secondary small">📅 Último acceso registrado: <?= date('d/m/Y H:i'); ?></p>
@@ -15,14 +19,14 @@
         <div class="col-md-6">
             <div class="card h-100 shadow-sm border-0">
                 <div class="card-body text-center p-4">
-                    <div class="bg-primary text-white d-inline-flex align-items-center justify-content-center rounded-circle mb-3" style="width: 60px; height: 60px;">
+                    <div class="bg-danger text-white d-inline-flex align-items-center justify-content-center rounded-circle mb-3" style="width: 60px; height: 60px;">
                         <span class="fs-3">🎮</span>
                     </div>
                     <h3 class="card-title fw-bold">Videojuegos</h3>
                     <p class="card-text text-muted">Añade nuevos títulos, edita precios, valoraciones, reseñas, descripciones o elimina juegos del catálogo.</p>
                 </div>
                 <div class="card-footer bg-light border-0 p-3 text-center">
-                    <a href="<?= BASE_URL ?>/editGames" class="btn btn-primary px-4 w-100">Administrar Juegos</a>
+                    <a href="<?= BASE_URL ?>/editGames" class="btn btn-danger px-4 w-100">Administrar Juegos</a>
                 </div>
             </div>
         </div>
