@@ -25,4 +25,8 @@ class ControllerHome{
         $this->view->renderAbout();
     }
 
+    function showError($action){
+        $this->view->renderError($action);
+    }
+
 }

@@ -15,7 +15,7 @@
                 <path
                     d="M4.868 12.683a1.715 1.715 0 0 0 1.318-3.165 1.7 1.7 0 0 0-1.263-.02l1.023.424a1.261 1.261 0 1 1-.97 2.33l-.99-.41a1.7 1.7 0 0 0 .882.84Zm3.726-6.687a2.03 2.03 0 0 0 2.027 2.029 2.03 2.03 0 0 0 2.027-2.029 2.03 2.03 0 0 0-2.027-2.027 2.03 2.03 0 0 0-2.027 2.027m2.03-1.527a1.524 1.524 0 1 1-.002 3.048 1.524 1.524 0 0 1 .002-3.048" />
             </svg>
-            <a class="navbar-brand" <?= ($this->ref != 'admin') ? 'href="'. BASE_URL . 'home"' : 'href="'. BASE_URL . 'adminview"' ?>><?= ($this->ref === 'admin') ? ' WIKI STEAM ADMIN CONTROL' : 'WIKI STEAM' ?></a>
+            <a class="navbar-brand" <?= ($this->ref != 'admin') ? 'href="' . BASE_URL . 'home"' : 'href="' . BASE_URL . 'adminview"' ?>><?= ($this->ref === 'admin') ? ' WIKI STEAM ADMIN CONTROL' : 'WIKI STEAM' ?></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01"
                 aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -33,11 +33,16 @@
                         <li class="nav-item">
                             <a class="nav-link <?= ($this->ref == 'about' || $this->ref == 'admin') ? 'active' : '' ?>" href="<?= BASE_URL ?>about">About</a>
                         </li>
+                        <?php if (isset($_SESSION['admin'])) : ?>
+                            <li class="nav-item">
+                                <a class="nav-link " href="<?= BASE_URL . 'adminview' ?>">Administrar</a>
+                            </li>
+                        <?php endif; ?>
                     <?php else: ?>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle active" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Editores</a>
                             <div class="dropdown-menu">
-                                <a class="dropdown-item" href="<?= BASE_URL ?>editEditores">Ediciones</a>                              
+                                <a class="dropdown-item" href="<?= BASE_URL ?>editEditores">Ediciones</a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="formAltasEditores">Form altas</a>
                             </div>
@@ -52,9 +57,8 @@
                         </li>
                 </ul>
                 <div class="logg-out">
-                    <p class="mt-1 mb-1" >Hola <?= $admin->nombre_apellido ?>!</p>
-                    <a href="sessionout">
-                        <button type="button" class="btn btn-dark">Cerrar seción</button>
+                    <p class="mt-1 mb-1">Hola <?= $admin->nombre_apellido ?>!</p>
+                    <a href="<?= BASE_URL . 'sessionout' ?>" type="button" class="btn btn-dark">Cerrar seción
                     </a>
                 </div>
             <?php endif; ?>

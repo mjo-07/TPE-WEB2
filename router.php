@@ -18,111 +18,107 @@ $params = explode('/', $action);
 //params = [0]->juego,[1]->5643
 //00000000,juego/uncharted
 
-if (isset($_SESSION['admin'])) {
 
-    switch ($params[0]) {
-        case 'adminview':
-            $controllerAdmin = new ControllerAdmin();
-            $controllerAdmin->showAdminControl();
-            break;
-        case 'sessionout':
-            $controllerAdmin = new ControllerAdmin();
-            $controllerAdmin->logout();
-            break;
-        case 'editGames':
-            $controllerAdmin = new ControllerAdmin();
-            $controllerAdmin->showEditsGames();
-            break;
-        case 'editEditores':
-            $controllerAdmin = new ControllerAdmin();
-            $controllerAdmin->showEditsEditors();
-            break;
-        case 'deleteEditor':
-            $controllerAdmin = new ControllerAdmin();
-            $controllerAdmin->deleteEditor($params[1]);
-            break;
-        case 'formAltasEditores':
-            $controllerAdmin = new ControllerAdmin();
-            $controllerAdmin->showFormEditores();
-            break;
-        case 'formAltasGames':
-            $controllerAdmin = new ControllerAdmin();
-            $controllerAdmin->showFormGames();
-            break;
-        case 'altaEditor':
-            $controllerAdmin = new ControllerAdmin();
-            $controllerAdmin->saveEditor();
-            break;
-        case 'altaGames':
-            $controllerAdmin = new ControllerAdmin();
-            $controllerAdmin->saveGame();
-            break;
-        case "modifyEditor":
-            $controllerAdmin = new ControllerAdmin();
-            $controllerAdmin->ModifyEditor($params[1]);
-            break;
-        case 'addModifyEditor':
-            $controllerAdmin = new ControllerAdmin();
-            $controllerAdmin->addModifyEditor($params[1]);
-            break;
-        case 'deleteGame':
-            $controllerAdmin = new ControllerAdmin();
-            $controllerAdmin->deleteGame($params[1]);
-            break;
-        case 'modifyGame':
-            $controllerAdmin = new ControllerAdmin();
-            $controllerAdmin->modifyGame($params[1]);
-            break;
-        case 'addModifyGame':
-             $controllerAdmin = new ControllerAdmin();
-            $controllerAdmin->addModifyGame($params[1]);
-            break;
-        default:
-            require_once 'app/views/viewHome.php';
-            $viewHome = new ViewHome;
-            $viewHome->renderError($action);
-            break;
-    }
-} else {
 
-    switch ($params[0]) {
-        case 'home':
-            $controllerHome = new ControllerHome();
-            $controllerHome->showHome();
-            break;
-        case 'games':
-            $controllerGame = new ControllerGame();
-            $controllerGame->showGames();
-            break;
-        case 'game':
-            $controllerGame = new ControllerGame();
-            $controllerGame->showGame($params[1]);
-            break;
-        case 'editors':
-            $controllerEditor = new ControllerEditor();
-            $controllerEditor->showEditors();
-            break;
-        case 'editor':
-            $controllerEditor = new ControllerEditor();
-            $controllerEditor->showEditor($params[1]);
-            break;
-        case 'about':
-            $controllerHome = new ControllerHome();
-            $controllerHome->showAbout();
-            break;
-        case 'administrar':
-            $controllerAdmin = new ControllerAdmin();
-            $controllerAdmin->showFormLogin();
-            break;
-        case 'load':
-            $controllerAdmin = new ControllerAdmin();
-            $controllerAdmin->autenticar();
-            break;
+switch ($params[0]) {
 
-        default:
-            require_once 'app/views/viewHome.php';
-            $viewHome = new ViewHome;
-            $viewHome->renderError($action);
-            break;
-    }
+    //public
+    case 'home':
+        $controllerHome = new ControllerHome();
+        $controllerHome->showHome();
+        break;
+    case 'games':
+        $controllerGame = new ControllerGame();
+        $controllerGame->showGames();
+        break;
+    case 'game':
+        $controllerGame = new ControllerGame();
+        $controllerGame->showGame($params[1]);
+        break;
+    case 'editors':
+        $controllerEditor = new ControllerEditor();
+        $controllerEditor->showEditors();
+        break;
+    case 'editor':
+        $controllerEditor = new ControllerEditor();
+        $controllerEditor->showEditor($params[1]);
+        break;
+    case 'about':
+        $controllerHome = new ControllerHome();
+        $controllerHome->showAbout();
+        break;
+    case 'administrar':
+        if (isset($_SESSION['admin'])) {
+            header("Location: " . BASE_URL . "adminview");
+            exit();
+        }
+        $controllerAdmin = new ControllerAdmin();
+        $controllerAdmin->showFormLogin();
+        break;
+    case 'load':
+        $controllerAdmin = new ControllerAdmin();
+        $controllerAdmin->autenticar();
+        break;
+
+    //admin
+    case 'adminview':
+        $controllerAdmin = new ControllerAdmin();
+        $controllerAdmin->showAdminControl();
+        break;
+    case 'sessionout':
+        $controllerAdmin = new ControllerAdmin();
+        $controllerAdmin->logout();
+        break;
+    case 'editGames':
+        $controllerAdmin = new ControllerAdmin();
+        $controllerAdmin->showEditsGames();
+        break;
+    case 'editEditores':
+        $controllerAdmin = new ControllerAdmin();
+        $controllerAdmin->showEditsEditors();
+        break;
+    case 'deleteEditor':
+        $controllerAdmin = new ControllerAdmin();
+        $controllerAdmin->deleteEditor($params[1]);
+        break;
+    case 'formAltasEditores':
+        $controllerAdmin = new ControllerAdmin();
+        $controllerAdmin->showFormEditores();
+        break;
+    case 'formAltasGames':
+        $controllerAdmin = new ControllerAdmin();
+        $controllerAdmin->showFormGames();
+        break;
+    case 'altaEditor':
+        $controllerAdmin = new ControllerAdmin();
+        $controllerAdmin->saveEditor();
+        break;
+    case 'altaGames':
+        $controllerAdmin = new ControllerAdmin();
+        $controllerAdmin->saveGame();
+        break;
+    case "modifyEditor":
+        $controllerAdmin = new ControllerAdmin();
+        $controllerAdmin->ModifyEditor($params[1]);
+        break;
+    case 'addModifyEditor':
+        $controllerAdmin = new ControllerAdmin();
+        $controllerAdmin->addModifyEditor($params[1]);
+        break;
+    case 'deleteGame':
+        $controllerAdmin = new ControllerAdmin();
+        $controllerAdmin->deleteGame($params[1]);
+        break;
+    case 'modifyGame':
+        $controllerAdmin = new ControllerAdmin();
+        $controllerAdmin->modifyGame($params[1]);
+        break;
+    case 'addModifyGame':
+        $controllerAdmin = new ControllerAdmin();
+        $controllerAdmin->addModifyGame($params[1]);
+        break;
+    default:
+        $controllerHome = new ControllerHome;
+        $controllerHome->showError($action);
+        break;
 }
