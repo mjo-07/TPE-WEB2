@@ -1,7 +1,8 @@
 <?php
-/** @var stdClass $admin */ 
-?>
 
+/** @var stdClass $admin */
+?>
+<a href="<?= BASE_URL . 'home' ?>" class="btn btn-info row col-1">HOME</a>
 <div class="container mt-5">
     <div class="row mb-4">
         <div class="col-12">
@@ -9,13 +10,15 @@
                 <h1 class="display-5 fw-bold text-dark">¡Hola, <?= $admin->nombre_apellido ?>!</h1>
                 <p class="lead text-muted">Bienvenido al panel de control. Desde aquí puedes gestionar todo el catálogo de videojuegos y las empresas editoras.</p>
                 <hr class="my-4">
-                <p class="text-secondary small">📅 Último acceso registrado: <?= date('d/m/Y H:i'); ?></p>
+                <p class="text-secondary small">
+                    📅 Último acceso registrado: <?= $_SESSION['last_login'] ?? date('d/m/Y H:i'); ?>
+                </p>
             </div>
         </div>
     </div>
 
     <div class="row g-4">
-        
+
         <div class="col-md-6">
             <div class="card h-100 shadow-sm border-0">
                 <div class="card-body text-center p-4">

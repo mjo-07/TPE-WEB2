@@ -3,7 +3,7 @@ require_once 'app/models/Model.php';
 
 class ModelAdmin extends Model{
 
-    function getByEmail($email)
+    function getAdminByEmail($email)
     {
         $pdo = $this->crearConexion();
         $query = $pdo->prepare("SELECT * FROM `admin` WHERE e_mail = ?");

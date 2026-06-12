@@ -18,8 +18,16 @@ class ControllerAdmin
         $this->view = new ViewAdmin();
     }
 
+    private function checkLoggedIn() {
+    if (!isset($_SESSION['admin'])) {
+        header("Location: " . BASE_URL . "administrar");
+        exit();
+    }
+}
+
     function showFormLogin()
     {
+        
         $this->view->renderFormLogin();
     }
 
@@ -29,24 +37,24 @@ class ControllerAdmin
         $email = $_REQUEST['email'];
         $password = $_REQUEST['password'];
 
-        $admin = $this->model->getByEmail($email);
+        $admin = $this->model->getAdminByEmail($email);
 
         if ($admin) {
             if (password_verify($password, $admin->password)) {
 
                 $_SESSION['admin'] = $admin;
-
+                $_SESSION['last_login'] = date('d/m/Y H:i');
                 header("Location: " . BASE_URL . "adminview");
-                return;
+                exit();
             } else {
                 $_SESSION['mensaje'] = "Contraseña incorrecta!";
                 header("Location: " . BASE_URL . "administrar");
-                return;
+                exit();
             }
         } else {
             $_SESSION['mensaje'] = "Usuario no encontrado!";
             header("Location: " . BASE_URL . "administrar");
-            return;
+            exit();
         }
     }
 
@@ -54,16 +62,21 @@ class ControllerAdmin
     {
         session_destroy();
         header("Location: " . BASE_URL);
+        exit();
     }
 
     function showAdminControl()
     {
+        $this->checkLoggedIn();
+
         $admin = $_SESSION['admin'];
         $this->view->renderAdminControl($admin);
     }
 
     function showEditsEditors()
     {
+        $this->checkLoggedIn();
+
         $admin = $_SESSION['admin'];
         $modelEditores = new ModelEditor();
         $editores = $modelEditores->getAllEditors();
@@ -72,6 +85,8 @@ class ControllerAdmin
 
     function showEditsGames()
     {
+        $this->checkLoggedIn();
+
         $admin = $_SESSION['admin'];
         $modelGames = new ModelGame();
         $games = $modelGames->getGames();
@@ -80,6 +95,7 @@ class ControllerAdmin
 
     function deleteEditor($id)
     {
+        $this->checkLoggedIn();
         $modelEditores = new ModelEditor();
         $resultado = $modelEditores->deleteOneEditor($id);
 
@@ -99,6 +115,8 @@ class ControllerAdmin
 
     function deleteGame($id)
     {
+        $this->checkLoggedIn();
+
         $modelGames = new ModelGame();
         $resultado = $modelGames->deleteOneGame($id);
 
@@ -115,11 +133,15 @@ class ControllerAdmin
 
     function showFormEditores()
     {
+        $this->checkLoggedIn();
+
         $this->view->renderFormAltasEditor();
     }
 
     function showFormGames()
     {
+        $this->checkLoggedIn();
+
         $modelEditores = new ModelEditor();
         $editores = $modelEditores->getAllEditors();
         $this->view->renderFormAltasGame($editores);
@@ -127,6 +149,7 @@ class ControllerAdmin
 
     function saveGame()
     {
+        $this->checkLoggedIn();
 
         $nombre      = $_POST['nombre_juego'] ?? null;
         $precio      = $_POST['precio'] ?? null;
@@ -189,6 +212,8 @@ class ControllerAdmin
 
     function saveEditor()
     {
+        $this->checkLoggedIn();
+
         $nombreEmpresa = $_POST['nombre_empresa'];
         $pais = $_POST['pais'];
         $sitioWeb = $_POST['sitio_web'];
@@ -238,10 +263,13 @@ class ControllerAdmin
             $_SESSION['alert_type'] = "danger";
         }
         header("Location: " . BASE_URL . "editEditores");
+        exit();
     }
 
     function modifyEditor($id)
     {
+        $this->checkLoggedIn();
+
         $modelEditor = new ModelEditor();
         $editor = $modelEditor->getEditor($id);
         $this->view->renderModifyEditor($editor);
@@ -249,6 +277,8 @@ class ControllerAdmin
 
     function addModifyEditor($id)
     {
+        $this->checkLoggedIn();
+
         $nombreEmpresa = $_POST['nombre_empresa'];
         $pais = $_POST['pais'];
         $sitioWeb = $_POST['sitio_web'];
@@ -298,10 +328,13 @@ class ControllerAdmin
             $_SESSION['alert_type'] = "danger";
         }
         header("Location: " . BASE_URL . "editEditores");
+        exit();
     }
 
     function modifyGame($id)
     {
+        $this->checkLoggedIn();
+
         $modelEditor = new ModelEditor();
         $editors = $modelEditor->getAllEditors($id);
         $modelGame = new ModelGame();
@@ -310,6 +343,7 @@ class ControllerAdmin
     }
 
     function addModifyGame($id){
+        $this->checkLoggedIn();
 
         $nombre      = $_POST['nombre_juego'] ?? null;
         $precio      = $_POST['precio'] ?? null;
@@ -365,6 +399,7 @@ class ControllerAdmin
             $_SESSION['alert_type'] = "danger";
         }
         header("Location: " . BASE_URL . "editGames");
+        exit();
     }
     
 }
