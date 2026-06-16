@@ -17,7 +17,7 @@
             id="nombre_juego" 
             name="nombre_juego" 
             placeholder="Ej. El juego del año"
-            value="<?= $game->titulo ?? '' ?>" 
+            value="<?= htmlspecialchars($game->titulo ?? '') ?>" 
             required>
         </div>
 
@@ -42,19 +42,19 @@
         <select class="form-select" id="id_editor" name="id_editor" required>
             <option value="" selected disabled>Selecciona el editor al que pertenece...</option>
             <?php foreach ($editores as $editor): ?>
-                <option value="<?= $editor->id_editor ?>"><?= $editor->nombre_empresa ?></option>
+                <option value="<?= $editor->id_editor ?>"><?= htmlspecialchars($editor->nombre_empresa) ?></option>
             <?php endforeach; ?>
         </select>
     </div>
 
     <div class="mb-3">
         <label for="descripcion" class="form-label fw-bold">Descripción del Juego</label>
-        <input type="text" class="form-control" id="descripcion" name="descripcion" placeholder="Sinopsis oficial o características breves..." value="<?= $game->descripcion ?? '' ?>" >
+        <input type="text" class="form-control" id="descripcion" name="descripcion" placeholder="Sinopsis oficial o características breves..." value="<?= htmlspecialchars($game->descripcion ?? '') ?>" >
     </div>
 
     <div class="mb-3">
         <label for="resenia" class="form-label fw-bold">Reseña / Opinión</label>
-        <textarea class="form-control" id="resenia" name="resenia" rows="3" placeholder="Escribe un análisis o crítica sobre el juego..."><?= $game->resenia ?? '' ?> </textarea>
+        <textarea class="form-control" id="resenia" name="resenia" rows="3" placeholder="Escribe un análisis o crítica sobre el juego..."><?= htmlspecialchars($game->resenia ?? '') ?> </textarea>
     </div>
 
     <div class="mb-4">
@@ -63,7 +63,7 @@
     <?php if (isset($game) && !empty($game->imagen)): ?>
         <div class="mb-3 p-2 border rounded bg-white text-center d-inline-block">
             <p class="small text-muted mb-1">Carátula actual:</p>
-            <img src="<?= BASE_URL ?>imagenes/<?= $game->imagen ?>" alt="Carátula actual" class="img-thumbnail" style="max-height: 120px;">
+            <img src="<?= BASE_URL ?>imagenes/<?= $game->imagen ?? 'errores/imgSinCargar.png' ?>" alt="Carátula actual" class="img-thumbnail" style="max-height: 120px;">
             <input type="hidden" name="imagen_actual" value="<?= $game->imagen ?>">
         </div>
     <?php endif; ?>

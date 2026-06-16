@@ -135,7 +135,7 @@ class ControllerAdmin
     {
         $this->checkLoggedIn();
 
-        $this->view->renderFormAltasEditor();
+        $this->view->renderFormEditor();
     }
 
     function showFormGames()
@@ -144,7 +144,7 @@ class ControllerAdmin
 
         $modelEditores = new ModelEditor();
         $editores = $modelEditores->getAllEditors();
-        $this->view->renderFormAltasGame($editores);
+        $this->view->renderFormGame($editores);
     }
 
     function saveGame()
@@ -272,7 +272,7 @@ class ControllerAdmin
 
         $modelEditor = new ModelEditor();
         $editor = $modelEditor->getEditor($id);
-        $this->view->renderModifyEditor($editor);
+        $this->view->renderFormEditor($editor);
     }
 
     function addModifyEditor($id)
@@ -339,7 +339,7 @@ class ControllerAdmin
         $editors = $modelEditor->getAllEditors($id);
         $modelGame = new ModelGame();
         $game = $modelGame->getGame($id);
-        $this->view->renderModifyGame($game,$editors);
+        $this->view->renderFormGame($editors, $game);
     }
 
     function addModifyGame($id){

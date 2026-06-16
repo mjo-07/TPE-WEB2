@@ -57,7 +57,7 @@
                         </li>
                 </ul>
                 <div class="logg-out">
-                    <p class="mt-1 mb-1">Hola <?= $admin->nombre_apellido ?>!</p>
+                    <p class="mt-1 mb-1">Hola <?= htmlspecialchars($admin->nombre_apellido) ?>!</p>
                     <a href="<?= BASE_URL . 'sessionout' ?>" type="button" class="btn btn-dark">Cerrar seción
                     </a>
                 </div>

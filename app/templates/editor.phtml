@@ -4,11 +4,11 @@
 
 
 <section class=" pe-5 ps-5">
-    <h1 class="mb-4 mt-4 text-md-left"><?= $editor->nombre_empresa ?>&trade;</h1>
-    <img class="noticia-image" src="<?= BASE_URL ?>imagenes/<?= $editor->imagen ?>" alt="...">
+    <h1 class="mb-4 mt-4 text-md-left"><?= htmlspecialchars($editor->nombre_empresa) ?>&trade;</h1>
+    <img class="noticia-image" src="<?= BASE_URL ?>imagenes/<?= $editor->imagen ?? 'errores/imgSinCargar.png' ?>" alt="...">
     <div class="row align-items-start mt-5 mb-5">
         <div class="col-12 col-md-8">
-            <p class="lead p-2 bg-dark" style="border: 0.1mm grey solid; border-radius: 5px;"><?= $editor->descripcion ?></p>
+            <p class="lead p-2 bg-dark" style="border: 0.1mm grey solid; border-radius: 5px;"><?= htmlspecialchars($editor->descripcion) ?></p>
         </div>
         <div class="col-12 col-md-4">
             <ul class="list-group">
@@ -18,13 +18,13 @@
                 </li>
                 <li class="list-group-item d-flex justify-content-between align-items-center">
                     Pais de origen
-                    <small><?= $editor->pais ?></small>
+                    <small><?= htmlspecialchars($editor->pais) ?></small>
                 </li>
                 <li class="list-group-item d-flex justify-content-between align-items-center">
                     Web
                 </li>
                 <li class="list-group-item d-flex align-items-center text-info">
-                    <a class="text-info" href="<?= $editor->sitio_web ?>" target="_blank" style="color: white;"><?= $editor->nombre_empresa ?>&trade;</a>
+                    <a class="text-info" href="<?= htmlspecialchars($editor->sitio_web) ?>" target="_blank" style="color: white;"><?= htmlspecialchars($editor->nombre_empresa) ?>&trade;</a>
                 </li>
             </ul>
         </div>
