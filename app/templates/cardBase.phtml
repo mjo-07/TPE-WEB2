@@ -5,9 +5,9 @@
 
 
     <div class="card">
-        <img src="<?= BASE_URL ?>imagenes/<?= $elemento->imagen ?>"
+        <img src="<?= BASE_URL ?>imagenes/<?= $elemento->imagen ?? 'errores/imgSinCargar.png' ?>"
             class="card-img-top" alt="...">
         <div class="card-body">
-            <a href="<?= BASE_URL . $this->ref . '/' . $elemento->id ?>" style="color: white"><h5 class="card-title"><?= $elemento->nombre; ?></h5></a>
+            <a href="<?= BASE_URL . $this->ref . '/' . $elemento->id ?>" style="color: white"><h5 class="card-title"><?= htmlspecialchars($elemento->nombre ?? '') ?></h5></a>
         </div>
     </div>

@@ -33,31 +33,17 @@ class ViewAdmin extends View
         require_once 'app/templates/foot.phtml';
     }
 
-    function renderFormAltasEditor($editor = null){
+    function renderFormEditor($editor = null){
         require_once 'app/templates/head.phtml';
         require_once 'app/templates/formEditor.phtml';
         require_once 'app/templates/foot.phtml';
 
     }
 
-    function renderFormAltasGame($editores, $game = null){
+    function renderFormGame($editores, $game = null){
         require_once 'app/templates/head.phtml';
         require_once 'app/templates/formGame.phtml';
         require_once 'app/templates/foot.phtml';
-    }
-
-    function renderModifyEditor($editor){
-        require_once 'app/templates/head.phtml';
-        require_once 'app/templates/formEditor.phtml';
-        require_once 'app/templates/foot.phtml';
-
-    }
-
-    function renderModifyGame( $game,$editores){
-        require_once 'app/templates/head.phtml';
-        require_once 'app/templates/formGame.phtml';
-        require_once 'app/templates/foot.phtml';
-
     }
 
 }

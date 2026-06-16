@@ -4,14 +4,14 @@
 ?>
 
 <section class="npe-5 ps-5">
-    <h1 class="mb-4 mt-4 text-md-left"><?= $game->titulo ?>&trade;</h1>
-    <h2> <?= $game->descripcion ?> </h2>
+    <h1 class="mb-4 mt-4 text-md-left"><?= htmlspecialchars($game->titulo) ?>&trade;</h1>
+    <h2> <?= htmlspecialchars($game->descripcion) ?> </h2>
     <img class="noticia-image"
-        src="<?= BASE_URL ?>imagenes/<?= $game->imagen ?>"
+        src="<?= BASE_URL ?>imagenes/<?= $game->imagen ?? 'errores/imgSinCargar.png' ?>"
         alt="...">
     <div class="row align-items-start mt-5 mb-5">
         <div class="col-12 col-md-8">
-            <p class="lead p-2 bg-dark" style="border: 0.1mm steelgray solid; border-radius: 5px;"><?= $game->resenia ?></p>
+            <p class="lead p-2 bg-dark" style="border: 0.1mm steelgray solid; border-radius: 5px;"><?= htmlspecialchars($game->resenia) ?></p>
         </div>
         <div class="col-12 col-md-4">
             <ul class="list-group">
@@ -28,7 +28,7 @@
                     <small><?= $game->precio ?></small>
                 </li>
                 <li class="list-group-item d-flex align-items-center text-info">
-                    <a class="text-info" href="<?= BASE_URL . 'editor/' . $game->id_editor?>" style="color: white;"><?= $game->nombre_empresa ?></a>
+                    <a class="text-info" href="<?= BASE_URL . 'editor/' . $game->id_editor?>" style="color: white;"><?= htmlspecialchars($game->nombre_empresa) ?></a>
                 </li>
             </ul>
         </div>

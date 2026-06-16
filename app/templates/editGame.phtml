@@ -22,17 +22,17 @@
         <tbody>
             <?php foreach ($games as $game): ?>
                 <tr class="table-success">
-                    <th scope="row"><?= $game->titulo ?></th>
-                    <td><?= $game->descripcion ?></td>
-                    <td><?= $game->precio ?></td>
-                    <td><?= $game->fecha_lanzamiento ?></td>
+                    <th scope="row"><?= htmlspecialchars($game->titulo ?? '') ?></th>
+                    <td><?= htmlspecialchars($game->descripcion ?? '') ?></td>
+                    <td><?= $game->precio ?? '' ?></td>
+                    <td><?= $game->fecha_lanzamiento ?? '' ?></td>
                     <td><?= $game->valoracion ?></td>
                     <td><button type="button" class="btn btn-outline-info" data-bs-container="body"
                             data-bs-toggle="popover" data-bs-placement="bottom" data-bs-html="true"
                             data-bs-title="Información del Juego"
-                            data-bs-content="<p><?= $game->resenia ?></p><hr>
-                                <img src='<?= BASE_URL ?>imagenes/<?= $game->imagen ?>' class='img-fluid rounded mx-auto d-block' alt='Logo'>
-                                <hr><p>by <?= $game->nombre_empresa . '&trade;' ?></p>">
+                            data-bs-content="<p><?= htmlspecialchars($game->resenia) ?></p><hr>
+                                <img src='<?= BASE_URL ?>imagenes/<?= $game->imagen ?? 'errores/imgSinCargar.png' ?>' class='img-fluid rounded mx-auto d-block' alt='Logo'>
+                                <hr><p>by <?= htmlspecialchars($game->nombre_empresa) . '&trade;' ?></p>">
                             Ver más
                         </button></td>
                     <td>

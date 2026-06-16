@@ -23,15 +23,15 @@
         <tbody>
             <?php foreach ($editores as $editor): ?>
                 <tr class="table-warning">
-                    <th scope="row"><?= $editor->nombre_empresa ?></th>
-                    <td><?= $editor->pais ?></td>
-                    <td><?= $editor->sitio_web ?></td>
+                    <th scope="row"><?= htmlspecialchars($editor->nombre_empresa ?? '') ?></th>
+                    <td><?= htmlspecialchars($editor->pais ?? '') ?></td>
+                    <td><?= htmlspecialchars($editor->sitio_web ?? '') ?></td>
                     <td><?= $editor->valoracion ?></td>
                     <td><button type="button" class="btn btn-outline-info" data-bs-container="body"
                             data-bs-toggle="popover" data-bs-placement="bottom" data-bs-html="true"
                             data-bs-title="Información del Editor"
-                            data-bs-content="<p><?= $editor->descripcion ?></p><hr>
-                                <img src='<?= BASE_URL ?>imagenes/<?= $editor->imagen ?>' class='img-fluid rounded mx-auto d-block' alt='Logo'>">
+                            data-bs-content="<p><?= htmlspecialchars($editor->descripcion ?? '') ?></p><hr>
+                                <img src='<?= BASE_URL ?>imagenes/<?= $editor->imagen ?? 'errores/imgSinCargar.png' ?>' class='img-fluid rounded mx-auto d-block' alt='Logo'>">
                             Ver más
                         </button></td>
                     <td>

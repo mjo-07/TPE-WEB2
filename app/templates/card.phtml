@@ -7,15 +7,15 @@
 
 
 <div class="card mb-3">
-    <img src="<?= BASE_URL ?>imagenes/<?= $elemento->imagen ?>"
+    <img src="<?= BASE_URL ?>imagenes/<?= $elemento->imagen ?? 'errores/imgSinCargar.png' ?>"
         class="card-img-top " alt="...">
 
     <ul class="list-group list-group-flush">
-        <li class="list-group-item"><?= $elemento->titulo ?></li>
-        <li class="list-group-item"><?= $elemento->descripcion ?></li>
+        <li class="list-group-item"><?= htmlspecialchars($elemento->titulo ?? '') ?></li>
+        <li class="list-group-item"><?= htmlspecialchars($elemento->descripcion ?? '') ?></li>
         <li class="list-group-item">
-        <a href="<?= BASE_URL ?>editor/ <?= $elemento->id_editor ?>" style="color: white">
-            <?=($this->ref == 'game') ? $elemento->nombre_empresa : $editor->nombre_empresa ?>
+        <a href="<?= BASE_URL ?>editor/<?= $elemento->id_editor ?>" style="color: white">
+            <?=($this->ref == 'game') ? htmlspecialchars($elemento->nombre_empresa ?? '') : htmlspecialchars($editor->nombre_empresa ?? '') ?>
         </a>    
     </li>
     </ul>
