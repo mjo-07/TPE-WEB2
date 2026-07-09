@@ -15,10 +15,6 @@ if (!isset($action) || empty($action)) {
 }
 
 $params = explode('/', $action);
-//params = [0]->juego,[1]->5643
-//00000000,juego/uncharted
-
-
 
 switch ($params[0]) {
 

@@ -33,6 +33,11 @@ class ControllerAdmin
 
     function autenticar()
     {
+        if(empty($_REQUEST['email']) || empty($_REQUEST['password'])){
+            $_SESSION['mensaje'] = "Se debe ingresar usuario y contraseña!";
+            header("Location: " . BASE_URL . "administrar");
+            exit();
+        }
 
         $email = $_REQUEST['email'];
         $password = $_REQUEST['password'];
@@ -151,38 +156,33 @@ class ControllerAdmin
     {
         $this->checkLoggedIn();
 
-        $nombre      = $_POST['nombre_juego'] ?? null;
-        $precio      = $_POST['precio'] ?? null;
-        $lanzamiento = $_POST['fecha_lanzamiento'] ?? null;
-        $valoracion  = $_POST['valoracion'] ?? null;
-        $id_editor   = $_POST['id_editor'] ?? null;
-        $descripcion = $_POST['descripcion'] ?? null;
-        $resenia     = $_POST['resenia'] ?? null;
-
-
-        if (empty($nombre) || empty($id_editor)) {
-            $_SESSION['mensaje'] = "El título y el editor son campos obligatorios.";
+        if (empty($_POST['nombre_juego']) || empty($_POST['precio']) || empty($_POST['fecha_lanzamiento']) || empty($_POST['id_editor'])) {
+            $_SESSION['mensaje'] = "Falntan campos obligatorios para poder guardar el juego.";
             $_SESSION['alert_type'] = "danger";
             header("Location: " . BASE_URL . "editGames");
             exit();
         }
 
+        $nombre      = $_POST['nombre_juego'];
+        $precio      = $_POST['precio'];
+        $lanzamiento = $_POST['fecha_lanzamiento'];
+        $id_editor   = $_POST['id_editor'];
+
+        $valoracion  = $_POST['valoracion'] ?? null;
+        $descripcion = $_POST['descripcion'] ?? null;
+        $resenia     = $_POST['resenia'] ?? null;
 
         $nombreImagenGuardar = null;
-
 
         if (isset($_FILES['imagen_juego']) && $_FILES['imagen_juego']['error'] === UPLOAD_ERR_OK) {
 
             $fileTmpPath = $_FILES['imagen_juego']['tmp_name'];
             $fileName    = $_FILES['imagen_juego']['name'];
 
-
             $nombreImagenGuardar = time() . "_" . $fileName;
-
 
             $uploadFileDir = './imagenes/';
             $dest_path = $uploadFileDir . $nombreImagenGuardar;
-
 
             if (!move_uploaded_file($fileTmpPath, $dest_path)) {
 
@@ -192,7 +192,6 @@ class ControllerAdmin
                 exit();
             }
         }
-
 
         $modelGames = new ModelGame();
 
@@ -214,18 +213,21 @@ class ControllerAdmin
     {
         $this->checkLoggedIn();
 
-        $nombreEmpresa = $_POST['nombre_empresa'];
-        $pais = $_POST['pais'];
-        $sitioWeb = $_POST['sitio_web'];
-        $valoracion = $_POST['valoracion'];
-        $descripcion = $_POST['descripcion'];
-
-        if (empty($nombreEmpresa)) {
-            $_SESSION['mensaje'] = "El nombre de la empresa es un campo obligatorio.";
+        if (empty($_POST['nombre_empresa']) || empty($_POST['pais']) || empty($_POST['sitio_web'])) {
+            $_SESSION['mensaje'] = "Faltan campos obligatorios para guardar el editor.";
             $_SESSION['alert_type'] = "danger";
             header("Location: " . BASE_URL . "editGames");
             exit();
         }
+
+        $nombreEmpresa = $_POST['nombre_empresa'];
+        $pais = $_POST['pais'];
+        $sitioWeb = $_POST['sitio_web'];
+
+        $valoracion = $_POST['valoracion'] ?? null;
+        $descripcion = $_POST['descripcion'] ?? null;
+
+        
 
         $nombreImagenGuardar = null;
 
@@ -279,18 +281,19 @@ class ControllerAdmin
     {
         $this->checkLoggedIn();
 
-        $nombreEmpresa = $_POST['nombre_empresa'];
-        $pais = $_POST['pais'];
-        $sitioWeb = $_POST['sitio_web'];
-        $valoracion = $_POST['valoracion'];
-        $descripcion = $_POST['descripcion'];
-
-        if (empty($nombreEmpresa)) {
-            $_SESSION['mensaje'] = "El nombre de la empresa es un campo obligatorio.";
+        if (empty($_POST['nombre_empresa']) || empty($_POST['pais']) || empty($_POST['sitio_web'])) {
+            $_SESSION['mensaje'] = "Faltan campos obligatorios para actializar el editor.";
             $_SESSION['alert_type'] = "danger";
             header("Location: " . BASE_URL . "editGames");
             exit();
         }
+
+        $nombreEmpresa = $_POST['nombre_empresa'];
+        $pais = $_POST['pais'];
+        $sitioWeb = $_POST['sitio_web'];
+
+        $valoracion = $_POST['valoracion'] ?? null;
+        $descripcion = $_POST['descripcion'] ?? null;
 
         $nombreImagenGuardar = $_POST['imagen_actual'];
 
@@ -345,21 +348,21 @@ class ControllerAdmin
     function addModifyGame($id){
         $this->checkLoggedIn();
 
-        $nombre      = $_POST['nombre_juego'] ?? null;
-        $precio      = $_POST['precio'] ?? null;
-        $lanzamiento = $_POST['fecha_lanzamiento'] ?? null;
-        $valoracion  = $_POST['valoracion'] ?? null;
-        $id_editor   = $_POST['id_editor'] ?? null;
-        $descripcion = $_POST['descripcion'] ?? null;
-        $resenia     = $_POST['resenia'] ?? null;
-
-
-        if (empty($nombre) || empty($id_editor)) {
-            $_SESSION['mensaje'] = "El título y el editor son campos obligatorios.";
+        if (empty($_POST['nombre_juego']) || empty($_POST['precio']) || empty($_POST['fecha_lanzamiento']) || empty($_POST['id_editor'])) {
+            $_SESSION['mensaje'] = "Falntan campos obligatorios para poder actualizar el juego.";
             $_SESSION['alert_type'] = "danger";
             header("Location: " . BASE_URL . "editGames");
             exit();
         }
+
+        $nombre      = $_POST['nombre_juego'];
+        $precio      = $_POST['precio'];
+        $lanzamiento = $_POST['fecha_lanzamiento'];
+        $id_editor   = $_POST['id_editor'];
+
+        $valoracion  = $_POST['valoracion'] ?? null;
+        $descripcion = $_POST['descripcion'] ?? null;
+        $resenia     = $_POST['resenia'] ?? null;
 
 
         $nombreImagenGuardar = $_POST['imagen_actual'];

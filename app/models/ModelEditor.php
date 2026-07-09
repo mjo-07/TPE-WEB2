@@ -1,11 +1,9 @@
 <?php
 require_once 'Model.php';
 
-class ModelEditor extends Model
-{
+class ModelEditor extends Model{
 
-    function getEditoresDestacados($valoracion)
-    {
+    function getEditoresDestacados($valoracion){
         $pdo = $this->crearConexion();
         $query = $pdo->prepare("SELECT nombre_empresa AS nombre, imagen, id_editor AS id FROM editor WHERE valoracion = ? LIMIT 3");
         $query->execute([$valoracion]);
@@ -13,8 +11,7 @@ class ModelEditor extends Model
         return $destacados;
     }
 
-    function getEditors()
-    {
+    function getEditors(){
         $pdo = $this->crearConexion();
         $query = $pdo->prepare("SELECT nombre_empresa AS nombre, imagen, id_editor AS id FROM editor");
         $query->execute();
@@ -22,8 +19,7 @@ class ModelEditor extends Model
         return $editores;
     }
 
-    function getEditor($id)
-    {
+    function getEditor($id){
         $pdo = $this->crearConexion();
         $query = $pdo->prepare("SELECT * FROM editor WHERE id_editor = ?");
         $query->execute([$id]);
@@ -31,8 +27,7 @@ class ModelEditor extends Model
         return $editor;
     }
 
-    function getAllEditors()
-    {
+    function getAllEditors(){
         $pdo = $this->crearConexion();
         $query = $pdo->prepare("SELECT * FROM editor");
         $query->execute();
@@ -42,14 +37,13 @@ class ModelEditor extends Model
 
 
 
-    function deleteOneEditor($id)
-    {
+    function deleteOneEditor($id){
         try {
             $pdo = $this->crearConexion();
             $query = $pdo->prepare("DELETE FROM editor WHERE id_editor = ?");
             $query->execute([$id]);
-
             return "success";
+
         } catch (PDOException $e) {
             if (isset($e->errorInfo[1]) && $e->errorInfo[1] == 1451) {
                 return "restricted";
@@ -59,8 +53,7 @@ class ModelEditor extends Model
         }
     }
 
-    function insetNewEditor($nombreEmpresa, $pais, $sitioWeb, $valoracion, $descripcion, $nombreImagenGuardar)
-    {
+    function insetNewEditor($nombreEmpresa, $pais, $sitioWeb, $valoracion, $descripcion, $nombreImagenGuardar){
 
         try {
             $pdo = $this->crearConexion();
@@ -72,8 +65,7 @@ class ModelEditor extends Model
         }
     }
 
-    function updateEditor($id, $nombreEmpresa, $pais, $sitioWeb, $valoracion, $descripcion, $nombreImagenGuardar)
-    {
+    function updateEditor($id, $nombreEmpresa, $pais, $sitioWeb, $valoracion, $descripcion, $nombreImagenGuardar){
         try {
             $pdo = $this->crearConexion();
             $query = $pdo->prepare("UPDATE editor SET nombre_empresa = ?, pais = ?, sitio_web = ?, valoracion = ?, descripcion = ?, imagen = ? WHERE id_editor = ?");
