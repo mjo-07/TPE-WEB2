@@ -77,7 +77,7 @@ INSERT INTO `editor` (`id_editor`, `nombre_empresa`, `descripcion`, `pais`, `sit
 CREATE TABLE `video_juego` (
   `id_juego` int(11) NOT NULL,
   `titulo` varchar(50) NOT NULL,
-  `descripcion` text NOT NULL,
+  `descripcion` text DEFAULT NULL,
   `precio` decimal(6,2) NOT NULL,
   `resenia` text DEFAULT NULL,
   `fecha_lanzamiento` date NOT NULL,

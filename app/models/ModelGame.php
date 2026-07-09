@@ -4,27 +4,23 @@ require_once 'Model.php';
 class ModelGame extends Model
 {
 
-    function getGames()
-    {
+    function getGames(){
         $pdo = $this->crearConexion();
-        //$query = $pdo->prepare("SELECT *, titulo AS nombre FROM video_juego");
-        $query = $pdo->prepare("SELECT v.*, e.nombre_empresa, e.id_editor FROM video_juego v JOIN editor e USING(id_editor)");
+        $query = $pdo->prepare("SELECT v.*, e.nombre_empresa  FROM video_juego v JOIN editor e USING(id_editor)");
         $query->execute();
         $games = $query->fetchAll(PDO::FETCH_OBJ);
         return $games;
     }
 
-    function getGame($id)
-    {
+    function getGame($id){
         $pdo = $this->crearConexion();
-        $query = $pdo->prepare("SELECT v.*, e.id_editor, e.nombre_empresa FROM video_juego v JOIN editor e USING (id_editor) WHERE id_juego = ?");
+        $query = $pdo->prepare("SELECT v.*, e.nombre_empresa FROM video_juego v JOIN editor e USING (id_editor) WHERE id_juego = ?");
         $query->execute([$id]);
         $game = $query->fetch(PDO::FETCH_OBJ);
         return $game;
     }
 
-    function getGamesDestacados($valoracion)
-    {
+    function getGamesDestacados($valoracion){
         $pdo = $this->crearConexion();
         $query = $pdo->prepare("SELECT titulo AS nombre, imagen, id_juego AS id FROM video_juego WHERE valoracion = ? LIMIT 3");
         $query->execute([$valoracion]);
@@ -32,8 +28,7 @@ class ModelGame extends Model
         return $destacados;
     }
 
-    function getGamesByEditor($idEditor)
-    {
+    function getGamesByEditor($idEditor){
         $pdo = $this->crearConexion();
         $query = $pdo->prepare("SELECT * FROM video_juego WHERE id_editor = ?");
         $query->execute([$idEditor]);
@@ -41,22 +36,20 @@ class ModelGame extends Model
         return $games;
     }
 
-    function deleteOneGame($id)
-    {
+    function deleteOneGame($id){
         try {
             $pdo = $this->crearConexion();
             $query = $pdo->prepare("DELETE FROM video_juego WHERE id_juego = ?");
             $query->execute([$id]);
 
-            return true; // Se eliminó correctamente
+            return true; 
 
         } catch (PDOException $e) {
-            return false; // Ocurrió un error inesperado
+            return false; 
         }
     }
 
-    function insertNewGame($nombre, $precio, $lanzamiento, $valoracion, $id_editor, $descripcion, $resenia, $imagen)
-    {
+    function insertNewGame($nombre, $precio, $lanzamiento, $valoracion, $id_editor, $descripcion, $resenia, $imagen){
         try {
             $pdo = $this->crearConexion();
             $query = $pdo->prepare("INSERT INTO video_juego (titulo, precio, fecha_lanzamiento, valoracion, id_editor, descripcion, resenia, imagen) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");

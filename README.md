@@ -21,7 +21,7 @@ A continuación se presenta la estructura de la base de datos diseñada para est
 ### Usuario administrador
 
 Para acceder al panel de administración se debera ingresar a travez de una URL
-ya que la vita pública no cuenta con un botón para acceder al formulario de login
+ya que la vista pública no cuenta con un botón para acceder al formulario de login
 entendiendo que el usuario publico es ajeno al panel de administración por lo que
 no se le da intreracción con el login, quedando solo a conocimiento de los administradores.
 
