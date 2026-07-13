@@ -1,8 +1,7 @@
 <?php
 
-require_once 'View.php';
-
-class ViewGame extends View{
+class ViewGame
+{
 
     public $ref = 'game';
 

@@ -6,7 +6,9 @@ require_once 'app/controllers/ControllerAdmin.php';
 
 define('BASE_URL', '//' . $_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']) . '/');
 
-session_start();
+if(session_status() !== PHP_SESSION_ACTIVE){
+    session_start();
+}
 
 $action = $_REQUEST['action'];
 

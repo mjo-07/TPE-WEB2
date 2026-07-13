@@ -1,7 +1,7 @@
 <?php
-require_once 'View.php';
 
-class ViewEditor extends View{
+class ViewEditor
+{
 
     public $ref = 'editor';
 

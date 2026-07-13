@@ -1,6 +1,6 @@
 <?php
 
-class ViewAdmin extends View
+class ViewAdmin
 {
     public $ref = 'admin';
 

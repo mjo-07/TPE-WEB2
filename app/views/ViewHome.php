@@ -1,8 +1,7 @@
 <?php
-require_once 'View.php';
 
-
-class ViewHome extends View{
+class ViewHome
+{
     
     public $ref;
     
